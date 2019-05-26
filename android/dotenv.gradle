@@ -45,6 +45,7 @@ def loadDotEnv(flavor = getCurrentFlavor()) {
 
     File f = new File("$project.rootDir/../$envFile");
     if (!f.exists()) {
+      println("*** FILE NOT EXISTS - creating file ****")
         f = new File("$envFile");
     }
 
@@ -58,6 +59,7 @@ def loadDotEnv(flavor = getCurrentFlavor()) {
     } else {
         println("**************************")
         println("*** Missing .env file ****")
+        println("*** Searched at: $project.rootDir/../$envFile")
         println("**************************")
     }
 
@@ -97,4 +99,3 @@ tasks.whenTaskAdded { task ->
         }
     }
 }
-
