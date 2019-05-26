@@ -41,11 +41,14 @@ def loadDotEnv(flavor = getCurrentFlavor()) {
     }
 
     def env = [:]
-    println("Reading env from: $envFile")
+    println("Reading env from: $project.rootDir/../$envFile")
 
-    File f = new File("$project.rootDir/../$envFile");
+    Path p = Paths.get($project.rootDir).resolve("../$envFile");
+    File f = file(p);
+
+    // File f = new File("$project.rootDir/../$envFile");
     if (!f.exists()) {
-      println("*** FILE NOT EXISTS - creating file ****")
+      println("*** FILE NOT EXISTS ***")
         f = new File("$envFile");
     }
 
